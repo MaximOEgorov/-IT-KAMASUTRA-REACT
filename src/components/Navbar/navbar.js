@@ -6,7 +6,12 @@ const Navbar = (props) => {
     return (
         <nav>
             <div className={s.appWrapperContent}>
-                <NavLink to="/dialogs">Dialogs</NavLink>
+                <div>
+                    <NavLink to="/dialogs">Dialogs</NavLink>
+                </div>
+                <div>
+                    <NavLink to="/profile">Profile</NavLink>
+                </div>
             </div>
         </nav>
     );
