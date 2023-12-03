@@ -4,17 +4,11 @@ import s from "./navbar.module.css"
 
 const Navbar = (props) => {
     return (
-        <BrowserRouter>
-            <nav>
-                <div className={s.appWrapperContent}>
-                    Sample
-                    <Routes>
-                        <Route path="/dialogs" Component={Dialogs}/>
-                        Profile
-                    </Routes>
-                </div>
-            </nav>
-        </BrowserRouter>
+        <nav>
+            <div className={s.appWrapperContent}>
+                <NavLink to="/dialogs">Dialogs</NavLink>
+            </div>
+        </nav>
     );
 }
 
