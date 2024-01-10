@@ -1,4 +1,12 @@
+import React from "react";
 import s from "./profile.module.css"
+
+let newPostElement = React.createRef()
+
+let addPostFunc = () => {
+    let newText = newPostElement.current.value
+    alert(newText)
+}
 
 const Profile = (props) => {
     return (
@@ -6,10 +14,10 @@ const Profile = (props) => {
             <h3>My profile</h3>
             <div>
                 <div>
-                    <textarea></textarea>
+                    <textarea ref={newPostElement}></textarea>
                 </div>
                 <div>
-                    <button>
+                    <button onClick={addPostFunc}>
                         Add post
                     </button>
                 </div>
