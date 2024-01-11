@@ -1,11 +1,11 @@
 import s from "./messages.module.css"
 
-export const Messages = (props) => {
+export const Message = (props) => {
     return (
         <div>
-            Пример
+            {props.message}
         </div>
     )
 }
 
-export default Messages
+export default Message

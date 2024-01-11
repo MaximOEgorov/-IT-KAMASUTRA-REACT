@@ -1,29 +1,27 @@
 import s from "./dialogs.module.css"
+import DialogItem from "./DialogItem/DialogItem";
+import Message from "../Messages/message";
 
 const Dialogs = (props) => {
+    debugger
+    let dialogsElements = props.state.dialogsPage.dialogs.map( d=> <DialogItem name={d.name} id={d.id} />)
+    let messagesElements = props.state.dialogsPage.messages.map( m => <Message message={m.message} />)
+
     return (
-        <div className={s.dialogs}>
-            <div className={s.dialogsItem}>
-                <div className={s.dialog + ' ' + s.active}>
-                    Dialogs 1
-                </div>
-                <div className={s.dialog}>
-                    Dialogs 2
-                </div>
-                <div className={s.dialog}>
-                    Dialogs 3
-                </div>
-                <div className={s.dialog}>
-                    Dialogs 4
+        <div>
+            <div>
+                {dialogsElements}
+            </div>
+            <div>
+                <div>{messagesElements}</div>
+                <div>
+                    <div><textarea placeholder="Enter your message hear" cols="30" rows="10"></textarea></div>
                 </div>
             </div>
-            <div className={s.messages}>
-                <div className={s.dialog}>Hi!!</div>
-                <div className={s.dialog}>How are you?</div>
-                <div className={s.dialog}>Yo....</div>
-            </div>
+
         </div>
     );
 }
+
 
 export default Dialogs
