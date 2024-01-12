@@ -1,30 +1,23 @@
 import s from "./dialogs.module.css"
-import DialogItem from "./DialogItem/DialogItem";
-import Message from "../Messages/message";
-import {sendMessageCreator, updateNewMessageBodyCreator} from "../../redux/dialogs-reducer";
 
 const Dialogs = (props) => {
-    let state = props.store.getState().dialogsPage;
-
-    let dialogsElements = state.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
-    let messagesElements = state.messages.map(m => <Message message={m.message}/>)
-    let newMessageBody = state.newMessageBody;
+    let newMessageBody = props.newMessageBody;
     let onSendMessageClick = () => {
-        props.store.dispatch(sendMessageCreator());
+        props.SendMessageClick();
     }
     let onChangeMessageChange = (e) => {
         e.preventDefault();
         let body = e.target.value;
-        props.store.dispatch(updateNewMessageBodyCreator(body));
+        props.updateNewMessage(body);
     }
 
     return (
         <div>
             <div>
-                {dialogsElements}
+                {props.dialogsElements}
             </div>
             <div>
-                <div>{messagesElements}</div>
+                <div>{props.messagesElements}</div>
                 <div>
                     <div><textarea value={newMessageBody}
                                    onChange={onChangeMessageChange}
