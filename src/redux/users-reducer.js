@@ -4,38 +4,7 @@ const SET_USERS = "SET_USERS";
 
 
 let initialState = {
-    users: [
-        {
-            id: 1,
-            photoUrl: "https://www.games-of-thrones.ru/sites/default/files/pictures/allll/Nagiev/7.jpg",
-            followed: false,
-            fullName: "Dmitry",
-            status: "I'm boss",
-            location: {city: "Minsk", country: "Belarus"}
-        },
-        {
-            id: 2, photoUrl: "https://www.games-of-thrones.ru/sites/default/files/pictures/allll/Nagiev/7.jpg",
-            followed: false,
-            fullName: "Svetlana",
-            status: "I'm lector",
-            location: {city: "Minsk", country: "Belarus"}
-        },
-        {
-            id: 3,
-            photoUrl: "https://www.games-of-thrones.ru/sites/default/files/pictures/allll/Nagiev/7.jpg",
-            followed: true,
-            fullName: "Maxim",
-            status: "Team-lead",
-            location: {city: "Moscow", country: "Russia"}
-        },
-        {
-            id: 4, photoUrl: "https://www.games-of-thrones.ru/sites/default/files/pictures/allll/Nagiev/7.jpg",
-            followed: false,
-            fullName: "Victor",
-            status: "I'm student",
-            location: {city: "Lublin", country: "Poland"}
-        },
-    ]
+    users: []
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -65,7 +34,7 @@ const usersReducer = (state = initialState, action) => {
         case SET_USERS:
             return {
                 ...state,
-                users: [...state.users, action.users]
+                users: [...state.users, ...action.users]
             };
         default:
             return state;
