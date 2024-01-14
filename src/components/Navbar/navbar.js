@@ -7,13 +7,7 @@ const Navbar = (props) => {
         <nav>
             <div className={s.appWrapperContent}>
                 <div>
-                    <NavLink to="/dialogs">Dialogs</NavLink>
-                </div>
-                <div>
-                    <NavLink to="/profile">Profile</NavLink>
-                </div>
-                <div>
-                    <NavLink to="/messages">Messages</NavLink>
+                    <NavLink to="/users">Users</NavLink>
                 </div>
             </div>
         </nav>
