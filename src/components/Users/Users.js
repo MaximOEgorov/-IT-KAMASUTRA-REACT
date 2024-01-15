@@ -6,7 +6,6 @@ const Users = (props) => {
     if (props.users.length === 0) {
 
         axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-            debugger
             props.setUsers(response.data.items)
         });
 
@@ -46,7 +45,6 @@ const Users = (props) => {
         )
 */
     }
-debugger
     return (
         <div>
             {
