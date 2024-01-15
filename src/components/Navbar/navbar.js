@@ -9,6 +9,9 @@ const Navbar = (props) => {
                 <div>
                     <NavLink to="/users">Users</NavLink>
                 </div>
+                <div>
+                    <NavLink to="/dialogs">Dialogs</NavLink>
+                </div>
             </div>
         </nav>
     );
