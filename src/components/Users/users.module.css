@@ -4,3 +4,8 @@
     border: 3px solid blueviolet;
 
 }
+
+.selectedPage {
+    font-weight: bold;
+    color: red;
+}
