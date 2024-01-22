@@ -31,11 +31,11 @@ export default class Users extends Component {
                 <div>
                     {pages.map(p => {
                         return (
-                            <span className={this.props.currentPage === p && styles.selectedPage}
+                            <span className={this.props.currentPage === p ? styles.selectedPage:undefined}
                                   onClick={(e) => {
                                       this.onPageChanged(p)
                                   }}>
-                                {p}
+                                {p+', '}
                             </span>
                         )
                     })}
