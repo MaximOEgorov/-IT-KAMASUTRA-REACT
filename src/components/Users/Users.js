@@ -7,7 +7,8 @@ let Users = (props) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
-
+    console.log('totalUsersCount : '+ props.totalUsersCount);
+    console.log('pageSize : '+ props.pageSize);
     return (
         <div>
             <div>
