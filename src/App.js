@@ -1,19 +1,19 @@
 import './App.css';
 import {Route, Routes} from "react-router-dom";
-import Header from "./components/Header/header";
 import Navbar from "./components/Navbar/navbar";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import {Provider} from "react-redux";
 import store from "./redux/redux-store";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 function App(props) {
 
     return (
         <Provider store={store}>
             <div className="app-wrapper">
-                <Header/>
+                <HeaderContainer/>
                 <Navbar/>
                 <div className="app-wrapper-content">
                     <Routes>
