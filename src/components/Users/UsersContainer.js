@@ -5,7 +5,7 @@ import {
     setCurrentPage,
     setUsers,
     setUsersTotalCount,
-    toggleIsFetching,
+    toggleIsFetching, toggleIsFollowingProgress,
     unfollow
 } from "../../redux/users-reducer.js";
 import React from "react";
@@ -43,6 +43,8 @@ class UsersContainer extends React.Component {
                    follow={this.props.follow}
                    unfollow={this.props.unfollow}
                    isFetching={this.props.isFetching}
+                   isFollowingProgress={this.props.isFollowingProgress}
+                   toggleIsFollowingProgress={this.props.toggleIsFollowingProgress}
                    maxPages={this.props.maxPages}
             />
         </>
@@ -56,7 +58,8 @@ let mapStateToProps = (state) => {
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
         maxPages: state.usersPage.maxPages,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        isFollowingProgress: state.usersPage.isFollowingProgress
     }
 }
 
@@ -67,6 +70,7 @@ export default connect(mapStateToProps,
         setUsers,
         setCurrentPage,
         setUsersTotalCount,
-        toggleIsFetching
+        toggleIsFetching,
+        toggleIsFollowingProgress
     }
 )(UsersContainer);
