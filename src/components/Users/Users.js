@@ -1,9 +1,8 @@
 import React from "react";
-import axios from "axios";
 import styles from "./users.module.css"
 import person from "./../../assets/person.png"
 import {NavLink} from "react-router-dom";
-import {deleteFollow, postFollow} from "../../api/api";
+import {usersAPI} from "../../api/api";
 
 let Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -39,7 +38,7 @@ let Users = (props) => {
                         <div>
                             {u.followed ?
                                 <button onClick={() => {
-                                    deleteFollow(u.id).then(response => {
+                                    usersAPI.deleteFollow(u.id).then(response => {
                                         if (response.data.resultCode == 0) {
                                             props.unfollow(u.id);
                                         }
@@ -47,7 +46,7 @@ let Users = (props) => {
                                 }
                                 }>Unfollow</button> :
                                 <button onClick={() => {
-                                    postFollow(u.id).then(response => {
+                                    usersAPI.postFollow(u.id).then(response => {
                                         if (response.data.resultCode == 0) {
                                             props.follow(u.id);
                                         }

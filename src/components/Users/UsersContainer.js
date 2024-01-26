@@ -9,15 +9,14 @@ import {
     unfollow
 } from "../../redux/users-reducer.js";
 import React from "react";
-import axios from "axios";
 import Preloader from "../common/Preloader/Preloader.js";
-import {getUsers} from "../../api/api.js";
+import {usersAPI} from "../../api/api.js";
 
 
 class UsersContainer extends React.Component {
     componentDidMount() {
         this.props.toggleIsFetching(true);
-        getUsers(this.props.currentPage, this.props.pageSize).then(response => {
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(response => {
             this.props.toggleIsFetching(false);
             this.props.setUsers(response.items);
             this.props.setUsersTotalCount(response.totalCount);
@@ -27,7 +26,7 @@ class UsersContainer extends React.Component {
     onPageChanged = (pageNumber) => {
         this.props.toggleIsFetching(true);
         this.props.setCurrentPage(pageNumber);
-        getUsers(pageNumber, this.props.pageSize).then(response => {
+        usersAPI.getUsers(pageNumber, this.props.pageSize).then(response => {
             this.props.toggleIsFetching(false);
             this.props.setUsers(response.items)
         });
