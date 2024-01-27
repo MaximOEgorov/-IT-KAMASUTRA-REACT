@@ -22,11 +22,11 @@ export const usersAPI = {
                 return response.data
             })
     },
-    deleteFollow: (id) => {
-        return instance.delete(`follow/${id}`);
+    follow: (userId) => {
+        return instance.delete(`follow/${userId}`);
     },
 
-    postFollow: (id) => {
-        return instance.post(`follow/${id}`, null);
+    unfollow: (userId) => {
+        return instance.post(`follow/${userId}`, null);
     },
 }
