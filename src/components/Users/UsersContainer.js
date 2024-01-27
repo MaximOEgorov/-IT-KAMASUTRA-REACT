@@ -1,9 +1,9 @@
 import {connect} from "react-redux"
 import Users from "./Users.js";
 import {
-    follow, getUsers,
-    setCurrentPage, toggleIsFollowingProgress,
-    unfollow
+    follow,
+    getUsers,
+    setCurrentPage, toggleIsFollowingProgress, unfollow
 } from "../../redux/users-reducer.js";
 import React from "react";
 import Preloader from "../common/Preloader/Preloader.js";
@@ -30,7 +30,6 @@ class UsersContainer extends React.Component {
                    unfollow={this.props.unfollow}
                    isFetching={this.props.isFetching}
                    isFollowingProgress={this.props.isFollowingProgress}
-                   toggleIsFollowingProgress={this.props.toggleIsFollowingProgress}
                    maxPages={this.props.maxPages}
             />
         </>
