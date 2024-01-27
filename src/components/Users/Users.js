@@ -37,23 +37,23 @@ let Users = (props) => {
                         </div>
                         <div>
                             {u.followed ?
-                                <button disabled={props.isFollowingProgress} onClick={() => {
-                                    props.toggleIsFollowingProgress(true);
+                                <button disabled={props.isFollowingProgress.some(id => id === u.id)} onClick={() => {
+                                    props.toggleIsFollowingProgress(true, u.id);
                                     usersAPI.deleteFollow(u.id).then(response => {
-                                        if (response.data.resultCode == 0) {
+                                        if (response.data.resultCode === 0) {
                                             props.unfollow(u.id);
                                         }
-                                        props.toggleIsFollowingProgress(false);
+                                        props.toggleIsFollowingProgress(false, u.id);
                                     });
                                 }
                                 }>Unfollow</button> :
-                                <button disabled={props.isFollowingProgress} onClick={() => {
-                                    props.toggleIsFollowingProgress(true);
+                                <button disabled={props.isFollowingProgress.some(id => id === u.id)} onClick={() => {
+                                    props.toggleIsFollowingProgress(true, u.id);
                                     usersAPI.postFollow(u.id).then(response => {
-                                        if (response.data.resultCode == 0) {
+                                        if (response.data.resultCode === 0) {
                                             props.follow(u.id);
                                         }
-                                        props.toggleIsFollowingProgress(false);
+                                        props.toggleIsFollowingProgress(false, u.id);
                                     });
                                 }
                                 }>Follow</button>}
