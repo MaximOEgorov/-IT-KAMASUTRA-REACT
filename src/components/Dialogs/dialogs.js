@@ -1,4 +1,5 @@
 import React from "react";
+import {Navigate} from "react-router-dom";
 
 const Dialogs = (props) => {
     let newMessageBody = props.newMessageBody;
@@ -10,6 +11,8 @@ const Dialogs = (props) => {
         let body = e.target.value;
         props.updateNewMessageBodyCreator(body);
     }
+
+    if (!props.isAuth) return <Navigate to={"/login"} />
 
     return (
         <div>

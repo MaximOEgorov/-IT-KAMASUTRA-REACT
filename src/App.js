@@ -7,6 +7,7 @@ import {Provider} from "react-redux";
 import store from "./redux/redux-store";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import LoginPage from "./components/Login/Login";
 
 function App(props) {
 
@@ -21,6 +22,7 @@ function App(props) {
                         <Route path="/users"   element={<UsersContainer/>}/>
                         <Route path="/dialogs" element={<DialogsContainer/>}/>
                         <Route path="/profile" element={<ProfileContainer/>}/>
+                        <Route path="/login" element={<LoginPage/>}/>
                     </Routes>
                 </div>
             </div>
