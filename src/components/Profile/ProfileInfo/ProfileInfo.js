@@ -1,8 +1,8 @@
 import React from "react";
-import Preloader from "../../common/Preloader/Preloader";
+import Preloader from "../../common/Preloader/Preloader.js";
+import ProfileStatus from "./ProfileStatus.js"
 
 let ProfileInfo = (props) => {
-    console.log('props: ' + JSON.stringify(props))
     if (!props.profile) {
         return <Preloader/>
     } else {
@@ -14,6 +14,7 @@ let ProfileInfo = (props) => {
                 <div>
                     <img src={props.profile.photos.large}/>
                     <p>{props.profile.aboutMe}</p>
+                    <ProfileStatus status={"Hello, this's just sample"}/>
                 </div>
             </div>
 
