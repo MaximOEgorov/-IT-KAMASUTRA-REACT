@@ -14,7 +14,7 @@ let ProfileInfo = (props) => {
                 <div>
                     <img src={props.profile.photos.large}/>
                     <p>{props.profile.aboutMe}</p>
-                    <ProfileStatus status={"Hello, this's just sample"}/>
+                    <ProfileStatus status={props.status}/>
                 </div>
             </div>
 

@@ -1,4 +1,5 @@
 import axios from "axios";
+import {useId} from "react";
 
 
 const instance = axios.create({
@@ -28,9 +29,21 @@ export const usersAPI = {
         return instance.post(`follow/${userId}`, null);
     },
     getProfile: (userId) => {
-        return instance.get(`profile/` + userId)
+        return profileAPI.getProfile(userId)
             .then(response => {
                 return response.data;
             })
     },
+}
+
+export const profileAPI = {
+    getProfile(userId) {
+        return instance.get(`profile/` + userId)
+    },
+    getStatus(userId) {
+        return instance.get(`profile/status/` + userId)
+    },
+    updateStatus(status) {
+        return instance.put(`profile/status`, {status: status})
+    }
 }
