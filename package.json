@@ -16,7 +16,11 @@
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1",
     "web-vitals": "^2.1.4",
+    "styled-components": "^5",
     "yup": "^0.32.11"
+  },
+  "resolutions": {
+    "styled-components": "^5"
   },
   "scripts": {
     "start": "react-scripts start",
