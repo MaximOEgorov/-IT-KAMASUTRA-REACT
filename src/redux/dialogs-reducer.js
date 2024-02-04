@@ -1,4 +1,5 @@
-const UPDATE_NEW_MESSAGE_BODY = "UPDATE-NEW-MESSAGE-BODY";
+import keyNextValue from "../api/keyIncrement";
+
 const SEND_MESSAGE = "SEND-MESSAGE";
 
 let initialState = {
@@ -21,23 +22,14 @@ let initialState = {
 
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case UPDATE_NEW_MESSAGE_BODY:
-            return {
-                ...state, newMessageBody: action.body
-            }
         case SEND_MESSAGE:
             return {
-                ...state, messages: [...state.messages, {id: 6, message: state.newMessageBody}],
-                newMessageBody: ''
+                ...state, messages: [...state.messages, {id: keyNextValue(state.messages,'id'), message: action.newMessageBody}]
             };
         default:
             return state;
     }
 }
 
-export const sendMessageCreator = () => ({type: SEND_MESSAGE});
-export const updateNewMessageBodyCreator = (body) => ({
-    type: UPDATE_NEW_MESSAGE_BODY, body: body
-});
-
+export const sendMessageCreator = (newMessageBody) => ({type: SEND_MESSAGE, newMessageBody});
 export default dialogsReducer;
