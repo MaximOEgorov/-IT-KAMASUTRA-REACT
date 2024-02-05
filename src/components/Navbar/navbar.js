@@ -16,7 +16,7 @@ const Navbar = (props) => {
                     <NavLink to="/profile">Profile</NavLink>
                 </div>
                 <div>
-                    <NavLink to="/login">Login</NavLink>
+                    <NavLink to="/loginSubmit">Login</NavLink>
                 </div>
             </div>
         </nav>

@@ -8,7 +8,7 @@ const loginFormSchema = Yup.object().shape({
         .max(20,"Не может быть такого длинного имени")
         .required("Обязательно"),
     password: Yup.string()
-        .min(8, "Должно быть длинее 8 символов")
+        .min(5, "Должно быть длинее 8 символов")
         .required("Обязательно")
 })
 

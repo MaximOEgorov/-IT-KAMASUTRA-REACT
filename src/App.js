@@ -22,7 +22,7 @@ function App(props) {
                         <Route path="/users"   element={<UsersContainer/>}/>
                         <Route path="/dialogs" element={<DialogsContainer/>}/>
                         <Route path="/profile" element={<ProfileContainer/>}/>
-                        <Route path="/login" element={<LoginPage/>}/>
+                        <Route path="/loginSubmit" element={<LoginPage/>}/>
                     </Routes>
                 </div>
             </div>
