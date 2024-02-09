@@ -54,7 +54,6 @@ export const loginSubmit = (email, password, rememberMe) => (dispatch) => {
 };
 
 export const logout = () => (dispatch) => {
-    debugger
     usersAPI.logout()
         .then(response => {
             if (response.resultCode === 0) {
