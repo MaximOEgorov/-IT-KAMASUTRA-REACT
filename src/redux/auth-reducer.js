@@ -36,17 +36,22 @@ export const getAuthUserData = () => (dispatch) => {
         })
 }
 
-export const loginSubmit = (email, password, rememberMe) => async (dispatch) => {
-    let loginData = await usersAPI.login(email, password, rememberMe)
-    let resultCode = loginData.resultCode
-//        .then(response => {
-            if (resultCode === 0) {
-                await dispatch(getAuthUserData());
-            } else {
-                alert('resultCode === '+resultCode)
+export const loginSubmit = (email, password, rememberMe) => (dispatch) => {
+    usersAPI.login(email, password, rememberMe)
+        .then(response => {
+            try {
+                if (response.resultCode === 0) {
+                    dispatch(getAuthUserData());
+                } else {
+                    const err = response.messages?.length > 0 ? response.messages[0] : "Email or password is wrong"
+                    console.error("An error occurred while calling response:", err)
+//        return dispatch(stopSubmit("login", { _error: err }));
+                }
+            } catch (error) {
+                console.error("An error occurred while calling usersAPI.login:", error);
             }
-//        })
-}
+        })
+};
 
 export const logout = () => (dispatch) => {
     debugger

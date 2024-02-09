@@ -1,5 +1,5 @@
 import React from "react";
-import {Formik, Form, Field, ErrorMessage} from "formik"
+import {Formik, Form, Field, ErrorMessage, useFormik} from "formik"
 import loginFormSchema from "../FormValidation/LoginFormSchema";
 import {loginSubmit} from "../../redux/auth-reducer.js";
 import s from "./Login.module.css"
@@ -10,18 +10,18 @@ import {connect} from "react-redux";
 const LoginForm = (props) => {
     return <div>
         <Formik
-            initialValues={{email:"", password:"", rememberMe:false}}
-            validate={values=> {
+            initialValues={{email: "", password: "", rememberMe: false}}
+            validate={values => {
                 const errors = {};
                 if (!values.email) {
                     errors.email = 'Required';
-            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+                } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
                     errors.email = 'Invalid email address';
                 }
                 return errors
             }}
-            onSubmit={(values) => {
-                loginSubmit(values.email, values.password, values.rememberMe)
+            onSubmit={async (values) => {
+                props.loginSubmit(values.email, values.password, values.rememberMe)
             }}
             validationSchema={loginFormSchema}>
             {() => (
@@ -41,7 +41,7 @@ const LoginForm = (props) => {
                         <label htmlFor={'rememberMe'}> remember me </label>
                     </div>
 
-                    <button type={'submit'}>Log in</button>
+                    {<button type={'submit'}>Log in</button>}
                 </Form>
             )}
         </Formik>
@@ -55,7 +55,7 @@ const Login = (props) => {
     }
     return <div>
         <h1> LOGIN </h1>
-        <LoginForm/>
+        <LoginForm {...props}/>
     </div>
 }
 
@@ -63,5 +63,5 @@ const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth
 })
 
-export default Login
-// export default connect(mapStateToProps, {}) (Login)
+//export default Login
+export default connect(mapStateToProps, {loginSubmit})(Login)
