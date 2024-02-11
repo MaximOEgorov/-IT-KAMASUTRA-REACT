@@ -1,6 +1,6 @@
 import {getAuthUserData} from "./auth-reducer";
 
-const INITIALIZED_SUCCESS = "INITIALIZED_SUCCESS";
+const INITIALIZED_SUCCESS = "it-kamasutra/app/INITIALIZED_SUCCESS";
 
 let initialState = {
     initialized: false
@@ -24,9 +24,10 @@ export const initializedSuccess = () => ({
 
 export const initializeApp = () => (dispatch) => {
     let promise = dispatch(getAuthUserData());
-    promise.then(() => {
-        dispatch(initializedSuccess());
-    });
+    Promise.all([promise])
+        .then(() => {
+            dispatch(initializedSuccess());
+        });
 }
 
 

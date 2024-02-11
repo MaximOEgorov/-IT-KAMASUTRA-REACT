@@ -10,7 +10,6 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginPage from "./components/Login/Login";
 import React, {Component} from "react";
 import {compose} from "redux";
-import {state} from "./redux/store";
 import Preloader from "./components/common/Preloader/Preloader";
 import {initializeApp} from "./redux/app-reducer";
 

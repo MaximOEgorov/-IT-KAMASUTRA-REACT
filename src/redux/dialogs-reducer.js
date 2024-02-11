@@ -1,6 +1,6 @@
 import keyNextValue from "../api/keyIncrement";
 
-const SEND_MESSAGE = "SEND-MESSAGE";
+const SEND_MESSAGE = "it-kamasutra/dialogs/SEND-MESSAGE";
 
 let initialState = {
     dialogs: [
