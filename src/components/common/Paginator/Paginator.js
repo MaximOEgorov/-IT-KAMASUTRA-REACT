@@ -12,7 +12,7 @@ let Paginator = ({currentPage, onPageChanged, totalUsersCount, pageSize}) => {
         <div>
             {pages.map(p => {
                 return (
-                    <span className={currentPage === p ? styles.selectedPage : undefined}
+                    <span key={p} className={currentPage === p ? styles.selectedPage : undefined}
                           onClick={(e) => {
                               onPageChanged(p)
                           }}>
