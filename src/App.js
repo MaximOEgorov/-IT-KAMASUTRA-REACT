@@ -1,17 +1,21 @@
 import './App.css';
 import {Route, Routes, useLocation, useNavigate, useParams} from "react-router-dom";
 import Navbar from "./components/Navbar/navbar";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
+// import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import {connect, Provider} from "react-redux";
 import store from "./redux/redux-store";
-import ProfileContainer from "./components/Profile/ProfileContainer";
+// import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginPage from "./components/Login/Login";
 import React, {Component} from "react";
 import {compose} from "redux";
 import Preloader from "./components/common/Preloader/Preloader";
 import {initializeApp} from "./redux/app-reducer";
+
+const DialogsContainer = React.lazy(() => import ("./components/Dialogs/DialogsContainer"));
+const ProfileContainer = React.lazy(() => import ("./components/Profile/ProfileContainer"));
+
 
 class App extends Component {
     componentDidMount() {
@@ -28,13 +32,15 @@ class App extends Component {
                     <HeaderContainer/>
                     <Navbar/>
                     <div className="app-wrapper-content">
-                        <Routes>
-                            <Route path="/profile/:userId" element={<ProfileContainer/>}/>
-                            <Route path="/users" element={<UsersContainer/>}/>
-                            <Route path="/dialogs" element={<DialogsContainer/>}/>
-                            <Route path="/profile" element={<ProfileContainer/>}/>
-                            <Route path="/loginSubmit" element={<LoginPage/>}/>
-                        </Routes>
+                        <React.Suspense fallback={<Preloader/>}>
+                            <Routes>
+                                <Route path="/profile/:userId" element={<ProfileContainer/>}/>
+                                <Route path="/users" element={<UsersContainer/>}/>
+                                <Route path="/dialogs" element={<DialogsContainer/>}/>
+                                <Route path="/profile" element={<ProfileContainer/>}/>
+                                <Route path="/loginSubmit" element={<LoginPage/>}/>
+                            </Routes>
+                        </React.Suspense>
                     </div>
                 </div>
             </Provider>
@@ -64,4 +70,4 @@ let mapStateToProps = (state) => ({
 export default compose(
     connect(mapStateToProps, {initializeApp}),
     withRouter
-    ) (App);
+)(App);
