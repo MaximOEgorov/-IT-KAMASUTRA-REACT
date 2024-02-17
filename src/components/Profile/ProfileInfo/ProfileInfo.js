@@ -1,6 +1,8 @@
 import React from "react";
 import Preloader from "../../common/Preloader/Preloader.js";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
+import userPhoto from "../../../assets/person.png"
+import styles from "../profile.module.css"
 
 const ProfileInfo = ({profile, status, updateStatus}) => {
     if (!profile) {
@@ -12,7 +14,7 @@ const ProfileInfo = ({profile, status, updateStatus}) => {
                     Профиль пользователя {profile.fullName} (id: {profile.userId})
                 </div>
                 <div>
-                    <img src={profile.photos.large}/>
+                    <img className={styles.img} src={profile.photos.large || userPhoto}/>
                     <p>{profile.aboutMe}</p>
                     <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
                 </div>
