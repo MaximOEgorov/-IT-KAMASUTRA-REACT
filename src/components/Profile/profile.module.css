@@ -4,6 +4,6 @@
     margin-bottom: 20px;
 }
 
-.img {
-    width: 300px;
+.mainPhoto {
+    max-width: 300px;
 }

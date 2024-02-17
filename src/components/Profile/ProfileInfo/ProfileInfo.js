@@ -14,7 +14,7 @@ const ProfileInfo = ({profile, status, updateStatus}) => {
                     Профиль пользователя {profile.fullName} (id: {profile.userId})
                 </div>
                 <div>
-                    <img className={styles.img} src={profile.photos.large || userPhoto}/>
+                    <img className={styles.mainPhoto} src={profile.photos.large || userPhoto}/>
                     <p>{profile.aboutMe}</p>
                     <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
                 </div>
