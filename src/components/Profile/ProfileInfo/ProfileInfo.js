@@ -4,7 +4,7 @@ import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import userPhoto from "../../../assets/person.png"
 import styles from "../profile.module.css"
 
-const ProfileInfo = ({profile, status, updateStatus}) => {
+const ProfileInfo = ({isOwner, profile, status, updateStatus}) => {
     if (!profile) {
         return <Preloader/>
     } else {
@@ -15,6 +15,10 @@ const ProfileInfo = ({profile, status, updateStatus}) => {
                 </div>
                 <div>
                     <img className={styles.mainPhoto} src={profile.photos.large || userPhoto}/>
+                    {isOwner &&
+                    <div>
+                        <input type={"file"}/>
+                    </div>}
                     <p>{profile.aboutMe}</p>
                     <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
                 </div>
