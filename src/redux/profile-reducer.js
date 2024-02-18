@@ -1,6 +1,5 @@
 import {profileAPI, usersAPI} from "../api/api";
 import keyNextValue from "../api/keyIncrement";
-import profile from "../components/Profile/Profile";
 
 const ADD_POST = "it-kamasutra/profile/ADD-POST";
 const SET_USER_PROFILE = 'it-kamasutra/profile/SET_USER_PROFILE';
