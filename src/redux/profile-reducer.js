@@ -1,9 +1,11 @@
 import {profileAPI, usersAPI} from "../api/api";
 import keyNextValue from "../api/keyIncrement";
+import profile from "../components/Profile/Profile";
 
 const ADD_POST = "it-kamasutra/profile/ADD-POST";
 const SET_USER_PROFILE = 'it-kamasutra/profile/SET_USER_PROFILE';
 const SET_STATUS = 'it-kamasutra/profile/SET_STATUS';
+const SAVE_PHOTO_SUCCESS = 'it-kamasutra/profile/SAVE_PHOTO_SUCCESS';
 
 let initialState = {
     posts: [
@@ -34,6 +36,10 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state, status: action.status
             }
+        case SAVE_PHOTO_SUCCESS:
+            return {
+                ...state, profile: {...state.profile, photos: action.photos}
+            }
         default:
             return state;
     }
@@ -43,6 +49,7 @@ export const addPost = (text) => ({type: ADD_POST, newText: text});
 
 const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 const setStatus = (status) => ({type: SET_STATUS, status});
+const savePhotosSuccess = (photos) => ({type:SAVE_PHOTO_SUCCESS, photos})
 
 export const getUserProfile = (userId) => async (dispatch) => {
     let response = await usersAPI.getProfile(userId);
@@ -60,4 +67,12 @@ export const updateStatus = (status) => async (dispatch) => {
         dispatch(setStatus(status))
     }
 }
+
+export const savePhoto = (file) => async (dispatch) => {
+    let response = await profileAPI.savePhoto(file);
+    if (response.data.resultCode === 0) {
+        dispatch(savePhotosSuccess(response.data.data.photos));
+    }
+}
+
 export default profileReducer
